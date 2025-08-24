@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="frontend/assets/icon.png" alt="Project Logo" width="150"/>
+  <img src="frontend/src/assets/icon.png" alt="Project Logo" width="150"/>
 </p>
 
 # QubixWaves - Real-time Chat Application
