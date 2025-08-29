@@ -2,8 +2,10 @@ import { useState, useEffect, useCallback } from "react";
 import { uniqueNamesGenerator, adjectives, colors, animals } from "unique-names-generator";
 import axios from "axios";
 
+
 // Configure axios defaults
 axios.defaults.withCredentials = true;
+const API_URL = import.meta.env.VITE_BACKEND_URL;
 
 // Predefined set of distinct, vibrant colors that work well with the dark theme
 const ROOM_THEMES = {
@@ -179,6 +181,8 @@ function JoinRoom({ onJoin, roomName = "Global", onClose }) {
           const loginRes = await axios.post('/api/auth/login', {
             userName: finalUsername
           });
+          // Use full API URL in production
+          // const loginRes = await axios.post(`${API_URL}/api/auth/login`, { userName: finalUsername });
           
           const { id, userName, color } = loginRes.data;
           localStorage.setItem('anonymousUsername', finalUsername);
@@ -198,6 +202,7 @@ function JoinRoom({ onJoin, roomName = "Global", onClose }) {
                 color: finalColor,
                 isAnonymous: true
               });
+              // const signupRes = await axios.post(`${API_URL}/api/auth/signup`, { userName: finalUsername, color: finalColor, isAnonymous: true });
 
               const { _id, userName, color } = signupRes.data;
               localStorage.setItem('anonymousUsername', finalUsername);
@@ -227,6 +232,7 @@ function JoinRoom({ onJoin, roomName = "Global", onClose }) {
             color: finalColor,
             isAnonymous: false
           });
+          // const response = await axios.post(`${API_URL}/api/auth/signup`, { userName: username, password, color: finalColor, isAnonymous: false });
 
           const { _id, userName, color } = response.data;
           onJoin({
@@ -241,6 +247,7 @@ function JoinRoom({ onJoin, roomName = "Global", onClose }) {
             userName: username,
             password
           });
+          // const response = await axios.post(`${API_URL}/api/auth/login`, { userName: username, password });
 
           const { id, userName, color } = response.data;
           onJoin({

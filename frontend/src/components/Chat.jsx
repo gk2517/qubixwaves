@@ -5,10 +5,10 @@ import { toast, ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 
+
 // Configure axios defaults
 axios.defaults.withCredentials = true;
-
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+const API_URL = import.meta.env.VITE_BACKEND_URL;
 
 // Public STUN servers for NAT traversal
 const ICE_SERVERS = {
@@ -181,7 +181,7 @@ function Chat({ roomType, user }) {
       try {
         if (roomType === "network") {
           // Fetch room info for network rooms
-          const roomResponse = await axios.get("/api/rooms/assign");
+          const roomResponse = await axios.get(`${API_URL}/api/rooms/assign`);
           setRoomInfo(roomResponse.data);
           currentRoom = roomResponse.data.roomName;
         } else {
@@ -189,7 +189,7 @@ function Chat({ roomType, user }) {
         }
 
         const endpoint = roomType === "global" ? "/api/messages/global-room" : `/api/messages/${currentRoom}`;
-        const response = await axios.get(endpoint);
+  const response = await axios.get(`${API_URL}${endpoint}`);
         if (Array.isArray(response.data)) {
             response.data.forEach(msg => {
                 if(msg._id) processedMessageIds.current.add(msg._id)
@@ -384,7 +384,7 @@ function Chat({ roomType, user }) {
       const endpoint = `/api/messages/send/${roomName}`;
 
       // 🔽 Add a 'p2pSent' flag to the server request
-      await axios.post(endpoint, {
+  await axios.post(`${API_URL}${endpoint}`, {
         text: messagePayload.text,
         tempId: messagePayload._id,
         p2pSent: wasSentByP2P

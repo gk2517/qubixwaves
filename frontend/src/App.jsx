@@ -15,6 +15,7 @@ import axios from "axios";
 
 // Configure axios defaults
 axios.defaults.withCredentials = true;
+const API_URL = import.meta.env.VITE_BACKEND_URL;
 
 function Home({ onJoinRoom }) {
   const navigate = useNavigate();
@@ -162,7 +163,7 @@ function ChatRoute() {
     const checkAuth = async () => {
       try {
         // Try to get current user from session using the check endpoint
-        const response = await axios.get('/api/auth/check');
+        const response = await axios.get(`${API_URL}/api/auth/check`);
         if (isMounted) {
           setUser({
             id: response.data._id,
