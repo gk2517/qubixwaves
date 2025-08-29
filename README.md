@@ -1,4 +1,8 @@
-# Waves - Real-time Chat Application
+<p align="center">
+  <img src="frontend/src/assets/icon.png" alt="Project Logo" width="150"/>
+</p>
+
+# QubixWaves - Real-time Chat Application
 
 Waves is a modern, real-time chat application that offers both global and network-based chat rooms. Built with React, Node.js, and Socket.IO, it features a beautiful, responsive UI and seamless real-time communication.
 
@@ -129,15 +133,6 @@ npm run dev
 - CORS configuration
 - Input validation and sanitization
 
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
 
 ## Acknowledgments
 
