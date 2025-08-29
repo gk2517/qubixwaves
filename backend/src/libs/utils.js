@@ -8,7 +8,7 @@ export const generateToken = (userId, res) => {
   res.cookie("jwt", token, {
     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
     httpOnly: true,
-    sameSite: "lax", // Changed from strict to lax for better compatibility
+    sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax", // None for cross-site cookies in production
     secure: process.env.NODE_ENV === "production", // Only use secure in production
     path: "/", // Ensure cookie is available for all paths
   });
