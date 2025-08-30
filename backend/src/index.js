@@ -26,7 +26,7 @@ app.use(express.json());
 app.use(requestIp.mw());
 app.use(cookieParser());
 app.use(cors({
-  origin: ['http://localhost:5174', 'http://localhost:5175', 'http://localhost:5173','https://qubixwavesx.onrender.com' ,'13.228.225.19', '18.142.128.26', '54.254.162.138'],
+  origin: ['http://localhost:5174','https://qubixwavesx.onrender.com'], 
   credentials: true
 }));
 
